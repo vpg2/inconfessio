@@ -1,0 +1,9 @@
+#canvasForHTML {
+    z-index:-1;
+    position:fixed;
+}
+
+.textarea {
+    background-color:black;
+    z-index:1;
+}

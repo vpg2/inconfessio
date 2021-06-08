@@ -2,15 +2,18 @@
 <!DOCTYPE html>
 <html>
     <head>
+		<link rel="stylesheet" href="mystyle.css">
+
         <title>inconfessio</title>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.14/p5.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.14/p5.js"></script>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.6/addons/p5.dom.js"></script>
         <script>
         
         
             // Max Lamboy: Jan 11th, 2019  ( https://openprocessing.org/sketch/652091 02 jun 2021)
                 //Define variable objects type decided at first use.
-                var s = 70, ex = 10, txt,i;
-                txt = [];
+                //var s = 70, ex = 10, txt,i;
+                //txt = [];
             //
         
             let bubbles = [];
@@ -18,51 +21,50 @@
             let rsize = 0;
             
             function setup(){
-                var canvas = createCanvas(400, 400);
+				var canvas = createCanvas(400, 400);
+				
                 canvas.parent('canvasForHTML');
-                
-                	colorMode(HSB, 100);
-	createCanvas(windowWidth-20, windowHeight-20);
-	bub = new Bubble(width / 2, 50);
+				
+				ellipseMode(CENTER);
+                colorMode(HSB, 100);
+				createCanvas(windowWidth-20, windowHeight-20);
+				bub = new Bubble(width / 2, 50);
+				
+				canvas.position(0,0);
+				canvas.style('z-index', '-1');
             }
             
             function draw(){
-	background(0);
+				background(0);
 	
-	for(const bub of bubbles){
-		bub.move();
-		bub.draw();
-		bub.update();
-		if (bub.y < 0 || bub.size < 0){		//tá viva?
-			bub.alive = 0;
-		}
-	}
+				for(const bub of bubbles){
+					bub.move();
+					bub.draw();
+					bub.update();
+					if (bub.y < 0 || bub.size < 0){		//tá viva?
+						bub.alive = 0;
+					}
+				}
 	
-  for (let i = 0; i < bubbles.length; i++) { // ?
-    if (bubbles[i].alive == 0) {
-      bubbles.splice(i, 1);
-    }
-  }
+				for (let i = 0; i < bubbles.length; i++) { // ?
+					if (bubbles[i].alive == 0) {
+						bubbles.splice(i, 1);
+					}
+  				}
 	
-	if( frameCount % 1 == 0){			//todo quadro?
-		rxpos = randomGaussian(width / 2, width / 10);
-		rsize = 150 -  Math.abs((rxpos - width / 2));
-		bubbles.push(new Bubble(rxpos, rsize));
-	}
-	
-	
-	
-	
-  textRegion(300,height/2-ex,s+ex,ex,txt,s)
-	
-	
-	
+				if( frameCount % 1 == 0){			//todo quadro?
+					rxpos = randomGaussian(width / 2, width / 10);
+					rsize = 150 -  Math.abs((rxpos - width / 2));
+					bubbles.push(new Bubble(rxpos, rsize));
+				}
+
+				///textRegion(300,height/2-ex,s+ex,ex,txt,s)
             }
             
             
             
             
-function textRegion(r1,r2, r4, stroke,_text,_size){
+/*function textRegion(r1,r2, r4, stroke,_text,_size){
   var r3 = textWidth(join(_text,''))+ex;
   strokeWeight(stroke);
   fill(255);
@@ -73,6 +75,7 @@ function textRegion(r1,r2, r4, stroke,_text,_size){
   noFill();
   rect(r1, r2, r3, r4);
 }/*** end () ***/
+
 
 function keyPressed(){
   i = txt.length;
@@ -135,11 +138,9 @@ class Bubble{
     
     
     
-    <body style="background-color:black;">
-            <div id="canvasForHTML"></div>
-            <textarea id="w3review" name="w3review" rows="4" cols="50">
-At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.
-</textarea>
+	<body style="background-color:black;">
+        <div id="canvasForHTML"></div>
+        <textarea id="caixaDeTexto" name="caixaDeTexto" rows="4" cols="50" style="background-color:black; color: orange;"></textarea>
    </body>
     
     
