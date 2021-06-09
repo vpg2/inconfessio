@@ -18,7 +18,6 @@ function setup(){
     button.style('background-color', col0);
     button.style('color', 'white');
     button.style('position', 'absolute');
-    //button.style('left', '50%');
     button.center();
     button.style('top', '60%');
 
@@ -53,6 +52,7 @@ function draw(){
         rsize = 150 -  Math.abs((rxpos - width / 2));
         bubbles.push(new Bubble(rxpos, rsize));
     }
+    
 }
 
 class Bubble{
