@@ -6,98 +6,10 @@
         <title>inconfessio</title>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.14/p5.js"></script>
 		<script src="http://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.6/addons/p5.dom.js"></script>
-		<script>
-		        
-            let bubbles = [];
-            let rxpos = 0;
-            let rsize = 0;
-            
-            function setup(){
-				var canvas = createCanvas(400, 400);
-				
-                canvas.parent('canvasForHTML');
-				
-				ellipseMode(CENTER);
-                colorMode(HSB, 100);
-				createCanvas(windowWidth-20, windowHeight-20);
-				bub = new Bubble(width / 2, 50);
-				
-				canvas.position(0,0);
-				canvas.style('z-index', '-1');
-            }
-            
-            function draw(){
-				background(0);
-	
-				for(const bub of bubbles){
-					bub.move();
-					bub.draw();
-					bub.update();
-					if (bub.y < 0 || bub.size < 0){		//tá viva?
-						bub.alive = 0;
-					}
-				}
-	
-				for (let i = 0; i < bubbles.length; i++) { // ?
-					if (bubbles[i].alive == 0) {
-						bubbles.splice(i, 1);
-					}
-  				}
-	
-				if( frameCount % 1 == 0){			//todo quadro?
-					rxpos = randomGaussian(width / 2, width / 10);
-					rsize = 150 -  Math.abs((rxpos - width / 2));
-					bubbles.push(new Bubble(rxpos, rsize));
-				}
-			}
-			
-			class Bubble{
-				constructor(xpos, size){
-					this.x = xpos;
-					this.y = height - random(0, 50);
-					this.dx = 0;
-					this.dy = -5;
-					this.size = size;
-					this.brightness = 50;
-					this.saturation = 100;
-					this.hue = 0;
-					this.alive = 1;
-					this.alpha = 0;
-				}
-				
-				move(){
-					this.x += this.dx;
-					this.y += this.dy;
-				}
-				
-				draw(){
-					noStroke();
-					fill(this.hue,  this.saturation, this.brightness, this.alpha);
-					ellipse(this.x, this.y, this.size);
-				}
-				
-				update(){
-					this.size -= 2.4; 
-					
-					this.dy -= pow(Math.abs(this.y - height),2) / 1000000; 
-				
-					if (this.alpha < 50){ 
-						this.alpha += 2;
-					}
-					if (this.brightness < 100){ 
-						this.brightness += 2;
-					}
-					if (this.hue < 40 / 360 * 100){ 
-						this.hue += 0.3;
-					}
-					
-				}
-					
-			}
-        </script>
+		<script src="sketch.js"></script>
     </head>
 	<body style="background-color:black;">
         <div id="canvasForHTML"></div>
-        <textarea id="caixaDeTexto" name="caixaDeTexto" rows="4" cols="50" style="background-color:black; color: orange;"></textarea>
+        <textarea id="caixaDeTexto" name="caixaDeTexto" style="background-color:black; color: white; position:absolute; top: 15%; left:20%; width:60%; height:30vh"></textarea>
    </body>
 </html>
