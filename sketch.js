@@ -12,7 +12,7 @@ let animated = false;
 
 let purgingTextPresent = false;
 let purgingTextAnimationCounter = 0;
-let purgingText = "YOUR SINS HAVE BEEN PURGED. \nFORGIVE YOURSELF, FOR YOU HAVE BEEN FORGIVEN.";
+let purgingText = "YOUR SINS HAVE BEEN PURGED by TheNB.G0DE55xoxo. \nFORGIVE YOURSELF, FOR YOU HAVE BEEN FORGIVEN.";
 
 function setup(){
     var canvas = createCanvas(windowWidth, windowHeight);
@@ -20,11 +20,11 @@ function setup(){
     canvas.position(0,0);
     canvas.style('z-index', '-1', 'display', 'block');
 
-    
+
     ellipseMode(CENTER);
     colorMode(HSB, 100);
    // bub = new Bubble(width / 2, 50);
-    
+
     let col0 = color(0);
     let button = createButton('expurgatio');
     button.style('background-color', 'transparent');
@@ -54,7 +54,7 @@ function draw(){
         fogo = 0;
     }
 
-    
+
     fill(0,0,0);
     text(purgingText, (windowWidth/2) + 3, height * 0.3);
 
@@ -120,12 +120,12 @@ class Bubble{
         this.alive = 1;
         this.alpha = 0;
     }
-    
+
     move(){
         this.x += this.dx;
         this.y += this.dy;
     }
-    
+
     draw(){
         noStroke();
         fill(this.hue,  this.saturation, this.brightness, this.alpha);
@@ -133,25 +133,25 @@ class Bubble{
         //ellipse(this.x+width/3, this.y, this.size, this.hsize);
         //ellipse(this.x-width/3, this.y, this.size, this.hsize);
     }
-    
+
     update(){
-        this.size -= 2.4; 
+        this.size -= 2.4;
         this.hsize -= 2;
-        
-        this.dy -= pow(Math.abs(this.y - height),2) / 1000000; 
-    
-        if (this.alpha < 50){ 
+
+        this.dy -= pow(Math.abs(this.y - height),2) / 1000000;
+
+        if (this.alpha < 1000){
             this.alpha += 2*fogo;
         }
-        if (this.brightness < 100){ 
+        if (this.brightness < 5){0
             this.brightness += 2;
         }
-        /*if (this.hue < 40 / 360 * 100){ 
+        /*if (this.hue < 40 / 360 * 100){
             this.hue += 0.3;
         }*/
-        
+
     }
-        
+
 }
 
 function expurgatio() {
@@ -170,5 +170,3 @@ function animate() {
 function eraseText() {
     document.getElementById("caixaDeTexto").value = "";
 }
-
-
